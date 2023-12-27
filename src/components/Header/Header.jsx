@@ -1,9 +1,13 @@
-import css from './Header.module.css';
+import css from './Header.module.scss';
+import Logo from 'components/Logo/Logo';
 
 const Header = ({ children }) => {
   return (
     <header className={css.Header}>
-      <div className="container">{children}</div>
+      <div className="container">
+        <Logo />
+        {children}
+      </div>
     </header>
   );
 };

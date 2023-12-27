@@ -5,7 +5,7 @@
 }
 
 .Container {
-  composes: container from 'index.css';
+  composes: container from 'index.scss';
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

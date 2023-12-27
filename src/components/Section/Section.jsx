@@ -1,8 +1,8 @@
-import css from './Section.module.css';
+import css from './Section.module.scss';
 
-const Section = ({ title, children }) => {
+const Section = ({ children }) => {
   return (
-    <section className={css.section}>
+    <section className={css.Section}>
       <div className="container">{children}</div>
     </section>
   );

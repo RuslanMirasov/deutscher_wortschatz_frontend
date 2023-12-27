@@ -6,9 +6,7 @@ import Logo from './Logo/Logo';
 export const App = () => {
   return (
     <>
-      <Header>
-        <Logo />
-      </Header>
+      <Header />
       <main className="main">
         <Section>
           <h1>Deutscher Wordschatz</h1>
@@ -16,7 +14,6 @@ export const App = () => {
       </main>
       <Footer>
         <Logo />
-        <p>Footer</p>
       </Footer>
     </>
   );

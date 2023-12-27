@@ -1,4 +1,4 @@
-import css from './Footer.module.css';
+import css from './Footer.module.scss';
 
 const Footer = ({ children }) => {
   return (
