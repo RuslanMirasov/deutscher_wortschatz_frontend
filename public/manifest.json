@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Deutscher Wortschatz",
+  "name": "App zum Lernen deutscher Wörter",
   "icons": [
     {
       "src": "favicon.ico",
