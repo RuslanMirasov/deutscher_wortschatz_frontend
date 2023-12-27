@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/deutscher_wortschatz_frontend/static/css/main.4e6c4fc9.css",
+    "main.js": "/deutscher_wortschatz_frontend/static/js/main.09d3f2e5.js",
+    "index.html": "/deutscher_wortschatz_frontend/index.html",
+    "static/media/logo.svg": "/deutscher_wortschatz_frontend/static/media/logo.a98aef18aac77e3a0945cc6a653794f2.svg",
+    "main.4e6c4fc9.css.map": "/deutscher_wortschatz_frontend/static/css/main.4e6c4fc9.css.map",
+    "main.09d3f2e5.js.map": "/deutscher_wortschatz_frontend/static/js/main.09d3f2e5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e6c4fc9.css",
+    "static/js/main.09d3f2e5.js"
+  ]
+}
