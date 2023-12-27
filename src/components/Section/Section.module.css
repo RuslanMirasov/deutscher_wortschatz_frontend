@@ -1,0 +1,31 @@
+.section {
+  display: block;
+  width: 100%;
+  padding: 80px 20px;
+}
+
+.section:nth-child(2n) {
+  background: #f1f4f7;
+}
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  color: #556b85;
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 40px 20px;
+  }
+}
