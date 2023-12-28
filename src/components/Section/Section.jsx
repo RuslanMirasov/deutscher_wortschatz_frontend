@@ -12,31 +12,26 @@ const bgCheck = bgStyle => {
   return `url(${bgStyle}) no-repeat center center / cover`;
 };
 
-const Section = ({ bg = 'none', padTop = 'normal', padBottom = 'normal', height = 'auto', children }) => {
+const Section = ({ bg = 'none', dark, padTop, padBottom, full, mask, children }) => {
   const sectionClasses = {
     [css.Section]: true,
     [css.padTopNone]: padTop === 'none',
-    [css.padTopNormal]: padTop === 'normal',
     [css.padTopSmall]: padTop === 'small',
     [css.padTopBig]: padTop === 'big',
     [css.padBottomNone]: padBottom === 'none',
-    [css.padBottomNormal]: padBottom === 'normal',
     [css.padBottomSmall]: padBottom === 'small',
     [css.padBottomBig]: padBottom === 'big',
+    [css.FullScreen]: full,
+    [css.Dark]: dark,
   };
 
-  const sectionStyles = {
-    background: bgCheck(bg),
-    minHeight: height,
-  };
+  const currentSectionClasses = Object.keys(sectionClasses)
+    .filter(key => sectionClasses[key])
+    .join(' ');
 
   return (
-    <section
-      className={Object.keys(sectionClasses)
-        .filter(key => sectionClasses[key])
-        .join(' ')}
-      style={sectionStyles}
-    >
+    <section className={currentSectionClasses} style={{ background: bgCheck(bg) }}>
+      {mask && <div className={css.Mask} style={{ background: mask }}></div>}
       <div className="container">{children}</div>
     </section>
   );

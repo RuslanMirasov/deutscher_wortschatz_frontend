@@ -1,0 +1,44 @@
+.Button {
+  display: inline-flex;
+  font-family: 'Roboto', sans-serif;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 8px;
+  padding: 14px 30px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green-color);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 0px 14px 15px -14px rgba(0, 0, 0, 0.6);
+  transform: translate(0px, 0px);
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:active {
+    transform: translate(0px, 2px);
+    box-shadow: 0px 12px 10px -14px rgba(0, 0, 0, 0.6);
+  }
+  &:hover,
+  &:focus {
+    background: rgb(48, 173, 64);
+  }
+}
+
+.Big {
+  font-size: 18px;
+  padding: 16px 36px;
+}
+
+.Small {
+  font-size: 14px;
+  padding: 12px 20px;
+}

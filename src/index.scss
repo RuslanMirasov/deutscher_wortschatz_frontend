@@ -1,5 +1,5 @@
 @import-normalize;
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;900&display=swap');
 
 :root {
   --text-color: #222222;
@@ -11,6 +11,7 @@
   --black: #000;
   --gray: #a5a5a5;
   --footer-background-color: #373737;
+  --cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -37,6 +38,12 @@ a {
   color: inherit;
 }
 
+img {
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+}
+
 #root {
   display: flex;
   width: 100%;
@@ -52,8 +59,10 @@ a {
 
 .container {
   display: block;
+  position: relative;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0px 20px;
+  z-index: 2;
 }
