@@ -1,4 +1,29 @@
 .Section {
-  display: block;
+  display: flex;
   width: 100%;
+  height: auto;
+}
+.padTopNone {
+  padding-top: none;
+}
+.padTopNormal {
+  padding-top: 80px;
+}
+.padTopSmall {
+  padding-top: 40px;
+}
+.padTopBig {
+  padding-top: 100px;
+}
+.padBottomNone {
+  padding-bottom: none;
+}
+.padBottomNormal {
+  padding-bottom: 80px;
+}
+.padBottomSmall {
+  padding-bottom: 40px;
+}
+.padBottomBig {
+  padding-bottom: 100px;
 }

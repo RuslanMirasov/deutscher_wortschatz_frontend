@@ -1,20 +1,26 @@
-import Section from 'components/Section/Section';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import Logo from './Logo/Logo';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
 
-export const App = () => {
+const Home = lazy(() => import('pages/Home'));
+const Book = lazy(() => import('pages/Book'));
+const Thema = lazy(() => import('pages/Thema'));
+const Words = lazy(() => import('pages/Words'));
+const NotFound = lazy(() => import('pages/NotFound'));
+
+const App = () => {
   return (
-    <>
-      <Header />
-      <main className="main">
-        <Section>
-          <h1>Deutscher Wordschatz</h1>
-        </Section>
-      </main>
-      <Footer>
-        <Logo />
-      </Footer>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/books" element={<Home />} />
+        <Route path="/books/:bookId" element={<Book />} />
+        <Route path="/books/:bookId/:themId" element={<Thema />} />
+        <Route path="/books/:bookId/:themId/:wordId" element={<Words />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 };
+
+export default App;
