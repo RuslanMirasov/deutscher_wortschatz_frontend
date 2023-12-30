@@ -1,1 +1,0 @@
-![poster](./assets/poster.jpg)

@@ -3,18 +3,11 @@ import Section from '../components/Section/Section';
 
 const Book = () => {
   return (
-    <>
-      <Section bg="#eee" padTop="big">
-        <Title tag="h1" size="h2">
-          Book name
-        </Title>
-      </Section>
-      <Section full>
-        <Title tag="h2" size="h5">
-          Themas list
-        </Title>
-      </Section>
-    </>
+    <Section bg="https://wallpapercave.com/wp/wp1834599.jpg" padTop="big" mask="rgba(0,0,0,0.5)" dark>
+      <Title tag="h1" size="h2">
+        Book name
+      </Title>
+    </Section>
   );
 };
 

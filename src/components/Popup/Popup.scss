@@ -1,14 +1,14 @@
-$backdrop_background: rgba(0, 0, 0, 0.5);
+$backdrop_background: rgba(133, 133, 133, 0.5);
 $popup_background: var(--white);
-$popup_border_radius: 8px;
-$popup_padding: 40px;
+$popup_border_radius: 14px;
+$popup_padding: 40px 20px 30px 20px;
 $popup_padding_tablet: 32px;
 $popup_padding_mobil: 20px;
 
 $request_width: 440px;
 $info_width: 340px;
 
-.Popup {
+.popup {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -27,25 +27,40 @@ $info_width: 340px;
   background-color: $backdrop_background;
   padding: 40px 20px;
   transition: 400ms;
-  &.isOpen {
+  &.is-open {
     visibility: visible;
     opacity: 1;
-    .PopupContent {
+    .popup-content {
       transform: translate(0px, 0px);
     }
   }
-  .PopupContent {
+  .popup-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 14px;
+    gap: 10px;
     width: 100%;
+    text-align: center;
     position: relative;
     transform: translate(0px, 20px);
     transition: 400ms;
     background: $popup_background;
     border-radius: $popup_border_radius;
+    max-width: 320px;
+    &.type-error {
+      background: var(--red-color);
+      color: #fff;
+      .popup-close {
+        &::before,
+        &::after {
+          background: var(--white);
+        }
+      }
+    }
+    &.type-request {
+      max-width: 520px;
+    }
 
     @media screen and (min-width: 1280px) {
       padding: $popup_padding;
@@ -56,17 +71,10 @@ $info_width: 340px;
     @media screen and (max-width: 767px) {
       padding: $popup_padding_mobil;
     }
-
-    .forBtn {
-      margin-top: 10px;
-    }
-    .form {
-      margin-top: 14px;
-    }
   }
 }
 
-.PopupClose {
+.popup-close {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -82,6 +90,7 @@ $info_width: 340px;
   top: 16px;
   transition: var(--cubic);
   transform: rotate(0deg);
+  z-index: 3;
   &:hover,
   &:focus {
     transform: rotate(90deg);

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import css from './Button.module.scss';
 
-const Button = ({ to, onClick, variant, size, children }) => {
+const Button = ({ to, onClick, variant, size, full, children }) => {
   const allButtonClasses = {
     [css.Button]: true,
     [css.Big]: size === 'big',
@@ -10,6 +10,7 @@ const Button = ({ to, onClick, variant, size, children }) => {
     [css.BorderDark]: variant === 'border-dark',
     [css.Black]: variant === 'black',
     [css.White]: variant === 'white',
+    [css.Full]: full,
   };
 
   const currentClasses = Object.keys(allButtonClasses)

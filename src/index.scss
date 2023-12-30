@@ -27,6 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
+  background: #eee;
 }
 
 ul {
@@ -42,6 +43,14 @@ img {
   display: block;
   object-fit: cover;
   max-width: 100%;
+}
+
+.body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  &.locked {
+    overflow-y: hidden;
+  }
 }
 
 #root {

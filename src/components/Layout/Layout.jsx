@@ -1,18 +1,11 @@
-import { useState } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Loading from '../Loading/Loading';
-import { Popup } from '../Popups';
+import Popup from 'components/Popup/Popup';
 
 export const Layout = () => {
-  const [showPopup, setShowPopup] = useState(true);
-
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
-
   return (
     <>
       <Header />
@@ -22,7 +15,7 @@ export const Layout = () => {
         </Suspense>
       </main>
       <Footer />
-      {showPopup && <Popup onClose={togglePopup} />}
+      <Popup type="error" title="Error 404" text="Not Found" children={<div>This is children block</div>} />
     </>
   );
 };
