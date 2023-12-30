@@ -1,11 +1,27 @@
 import ReactDOM from 'react-dom';
-import { Title, Text } from 'components/Typography';
-import { Button, ButtonsList, CloseButton } from 'components/Buttons';
+import { CloseButton } from 'components/Buttons';
 import { usePopup } from 'contexts/PopupContext';
+import PopupError from './PopupError';
+import PopupConfirm from './PopupConfirm';
+import PopupRequest from './PopupRequest';
+import PopupCallback from './PopupCallback';
+import PopupLogin from './PopupLogin';
+import PopupRegistration from './PopupRegistration';
 import './Popup.scss';
 
+const popupInfos = {
+  errorTitle: 'Autsch...',
+  errorText: 'Offenbar ist etwas nicht ganz nach Plan gelaufen :(',
+
+  confirmTitle: 'Die Bewerbung ist abgeschickt!',
+  confirmText: 'Wir werden Ihre Bewerbung so schnell wie möglich bearbeiten.',
+
+  requestTitle: 'Anfrage versenden',
+  requestText: 'Füllen Sie das Formular aus und unser Manager wird Sie so schnell wie möglich kontaktieren.',
+};
+
 const Popup = () => {
-  const { isOpenPopup, popupType, popupTitle, popupText, popupClose, popupOpen } = usePopup();
+  const { isPopupLoading, isOpenPopup, popupType, popupTitle, popupText, popupClose } = usePopup();
 
   const popupContentClasses = {
     'popup-content': true,
@@ -15,6 +31,7 @@ const Popup = () => {
     'type-callback': popupType === 'callback',
     'type-error': popupType === 'error',
     'type-confirm': popupType === 'confirm',
+    'is-loading': isPopupLoading,
   };
 
   const currentPopupContentClasses = Object.keys(popupContentClasses)
@@ -27,24 +44,24 @@ const Popup = () => {
         <div className="popup" onClick={popupClose}>
           <div className={currentPopupContentClasses} onClick={e => e.stopPropagation()}>
             <CloseButton onClick={popupClose} />
-
-            {popupTitle && <Title>{popupTitle}</Title>}
-            {popupText && <Text size="big">{popupText}</Text>}
-
-            <ButtonsList align="center">
-              <Button
-                onClick={() =>
-                  popupOpen(
-                    'request',
-                    'Request',
-                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, minima dolores. Voluptatibus labore voluptate laboriosam consectetur sapiente inventore. Dicta tempore sunt, cum blanditiis quam eligendi quo fuga corporis ullam quasi.Laudantium, odit hic dolorum, repellendus distinctio vel eaque quaerat velit maiores sapiente ipsa earum enim doloremque nulla incidunt accusantium, cumque tenetur odio reprehenderit porro corrupti impedit! Deleniti quod expedita aut?Aperiam libero ad magnam accusantium provident saepe assumenda quos. Expedita obcaecati quisquam, voluptate qui neque incidunt architecto quia pariatur, impedit dolore laboriosam enim quas exercitationem! Atque provident consectetur enim cum?Sint veritatis nesciunt sed esse quibusdam maxime, accusantium, ipsum quos autem, vero facilis eaque deleniti perspiciatis quasi unde cum. Esse aut quae perferendis sed iure alias asperiores nam eum inventore.Dolores sequi numquam assumenda itaque cupiditate ut aperiam porro quasi voluptates tempora nobis amet earum, asperiores nihil impedit quo quis quos ullam illo eius ex? Culpa sunt suscipit porro a.Repellendus unde voluptatum eius possimus impedit, sint ab magni atque fugit tempore omnis, doloremque ipsam modi recusandae quaerat explicabo maxime amet fuga tenetur blanditiis. Recusandae repellat ea ex at voluptate.Nihil incidunt, voluptatibus unde minima veniam suscipit quas assumenda hic! Doloribus rem quae distinctio, fuga dicta magni quod ut sunt nemo rerum laborum, vel quas nesciunt laboriosam eaque illo eius.Ducimus sit quo, mollitia ipsa tempora fugiat distinctio quas id, veritatis necessitatibus odit suscipit placeat cum autem ratione molestiae obcaecati blanditiis, magnam quae soluta nulla deleniti repudiandae sunt? Odio, reiciendis.Velit sint voluptates ipsa ex nobis incidunt, esse explicabo fugit magnam corporis? Voluptates quos voluptate, nihil, commodi repudiandae tempore odio inventore ut aliquid, ipsa cum. Adipisci deserunt vel veritatis vero!Obcaecati quos ut porro molestias similique autem assumenda hic cumque, tenetur quisquam pariatur voluptas eaque, accusantium eius ipsa eum minima voluptate corrupti repellat ea minus quibusdam? Nihil ducimus minus dolorum.'
-                  )
-                }
-                variant="black"
-              >
-                REQUEST
-              </Button>
-            </ButtonsList>
+            {popupType === 'error' && (
+              <PopupError title={popupTitle === '' ? popupInfos.errorTitle : popupTitle} text={popupText === '' ? popupInfos.errorText : popupText} />
+            )}
+            {popupType === 'confirm' && (
+              <PopupConfirm
+                title={popupTitle === '' ? popupInfos.confirmTitle : popupTitle}
+                text={popupText === '' ? popupInfos.confirmText : popupText}
+              />
+            )}
+            {popupType === 'request' && (
+              <PopupRequest
+                title={popupTitle === '' ? popupInfos.requestTitle : popupTitle}
+                text={popupText === '' ? popupInfos.requestText : popupText}
+              />
+            )}
+            {popupType === 'callback' && <PopupCallback />}
+            {popupType === 'login' && <PopupLogin />}
+            {popupType === 'registration' && <PopupRegistration />}
           </div>
         </div>
       )}

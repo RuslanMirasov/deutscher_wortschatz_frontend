@@ -15,14 +15,16 @@
   font-weight: 800;
   color: inherit;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .LogoText p {
+  display: block;
   font-size: 12px;
   font-weight: 600;
 }
 .LogoText span {
+  display: block;
   font-size: 12px;
   font-weight: 600;
 }

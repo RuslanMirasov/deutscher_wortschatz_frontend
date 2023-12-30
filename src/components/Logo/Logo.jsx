@@ -1,11 +1,11 @@
 import css from './Logo.module.scss';
 import { NavLink } from 'react-router-dom';
-import logo from 'img/logo.svg';
+import Icon from 'components/Icon/Icon';
 
 const Logo = () => {
   return (
     <NavLink to="/" className={css.Logo}>
-      <img src={logo} alt="logo" />
+      <Icon name="logo" size={26} />
       <div className={css.LogoText}>
         <p>Deutscher</p>
         <span>Wortschatz</span>
