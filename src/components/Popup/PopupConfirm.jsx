@@ -15,7 +15,7 @@ const PopupConfirm = ({ title, text }) => {
         <hr />
       </>
       <Text>{text}</Text>
-      <Button size="small" onClick={popupClose} full>
+      <Button onClick={popupClose} full>
         OK
       </Button>
     </>

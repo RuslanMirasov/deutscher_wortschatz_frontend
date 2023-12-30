@@ -21,6 +21,26 @@ export const PopupProvider = ({ children }) => {
     setScrollbarWidth(width);
   }, []);
 
+  useEffect(() => {
+    const handleKeyPress = event => {
+      if (event.key === 'Escape') {
+        hidePopup();
+        setTimeout(() => {
+          setIsOpenPopup(false);
+          setPopupType(defaultPopupType);
+          setPopupTitle('');
+          setPopupText('');
+          bodyUnlock();
+        }, 310);
+      }
+    };
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []); // Пустой массив зависимостей гарантирует, что эффект сработает только один раз при монтировании компонента
+
   const setLoading = () => {
     setIsPopupLoading(true);
   };
