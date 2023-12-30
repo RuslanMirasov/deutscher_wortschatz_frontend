@@ -3,23 +3,23 @@ import '../Forms.scss';
 
 const LoginForm = () => {
   return (
-    <form action="./" method="get" className="form" novalidate>
+    <form action="./" method="get" className="form" noValidate>
       <label className="label">
         <span className="label__text">Name</span>
         <span className="label__input">
-          <input type="text" className="input" name="name" required autocomplete="true" />
+          <input type="text" className="input" name="name" required placeholder="Name" autoComplete="true" />
         </span>
       </label>
       <label className="label">
         <span className="label__text">Phone number</span>
         <span className="label__input">
-          <input type="tel" className="input" name="phone" required autocomplete="true" inputmode="text" />
+          <input type="tel" className="input" name="phone" required autoComplete="true" inputMode="text" />
         </span>
       </label>
       <label className="label">
         <span className="label__text">Email</span>
         <span className="label__input">
-          <input type="email" className="input" name="email" required autocomplete="true" />
+          <input type="email" className="input" name="email" required autoComplete="true" />
         </span>
       </label>
       <label className="label">
