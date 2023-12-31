@@ -1,0 +1,123 @@
+$input_height: 50px;
+$input_border_radius: 8px;
+$input_font_size: 16px;
+
+.Label {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  .LabelText {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 128.571% */
+  }
+  .LabelInput {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+  .label__error {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    overflow: hidden;
+    font-size: 12px;
+    color: var(--red-color);
+    padding-left: 18px;
+    height: 0px;
+    transition: var(--cubic);
+    &.active {
+      background: none;
+      height: 18px;
+    }
+  }
+}
+
+.Input {
+  width: 100%;
+  height: $input_height;
+  padding: 14px 18px;
+  border-radius: $input_border_radius;
+  border: 1px solid #ccc;
+  user-select: none;
+  transition: var(--cubic);
+  background: none;
+  outline: none;
+  font-size: $input_font_size;
+  &::placeholder {
+    color: #ccc;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25;
+    opacity: 1;
+    transition: var(--cubic);
+  }
+  ~ .icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: $input_height;
+    height: $input_height;
+    position: absolute;
+    top: 0px;
+    transition: var(--cubic);
+    svg {
+      width: 18px;
+      height: 18px;
+      transition: var(--cubic);
+    }
+    &.icon--left {
+      left: 0px;
+      svg {
+        fill: #ccc;
+      }
+    }
+    &.icon--right {
+      right: 0px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      svg {
+        pointer-events: none;
+      }
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &:focus {
+    border: 1px solid #ccc;
+    &::placeholder {
+      opacity: 0;
+    }
+    ~ .icon--left svg {
+      fill: var(--text-color);
+    }
+  }
+  &.red {
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+  }
+  &.input--textarea {
+    height: 100px;
+    resize: none;
+  }
+  &.input--icon {
+    padding-left: $input_height;
+    padding-right: $input_height;
+  }
+}
