@@ -35,11 +35,10 @@ export const PopupProvider = ({ children }) => {
       }
     };
     document.addEventListener('keydown', handleKeyPress);
-
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []); // Пустой массив зависимостей гарантирует, что эффект сработает только один раз при монтировании компонента
+  }, []);
 
   const setLoading = () => {
     setIsPopupLoading(true);

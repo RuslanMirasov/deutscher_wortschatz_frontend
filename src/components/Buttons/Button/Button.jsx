@@ -21,8 +21,12 @@ const Button = ({ to, onClick, variant, size, full, children }) => {
     <Link to={to} className={currentClasses}>
       <span>{children}</span>
     </Link>
-  ) : (
+  ) : onClick ? (
     <button type="button" onClick={onClick} className={currentClasses}>
+      <span>{children}</span>
+    </button>
+  ) : (
+    <button type="submit" className={currentClasses}>
       <span>{children}</span>
     </button>
   );
