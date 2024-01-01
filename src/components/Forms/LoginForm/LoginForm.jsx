@@ -15,10 +15,10 @@ const LoginForm = () => {
 
   return (
     <Form action="./" method="post" className="form" noValidate onSubmit={handleSubmit}>
-      <Input type="text" name="name" required label="Ihre Vorname" placeholder="Mirasov Ruslan" />
-      <Input type="email" name="email" required label="Ihre Email" placeholder="example@example.com" />
-      <Input type="tel" name="phone" required label="Ihre Telephonnumer" placeholder="+380962167126" />
-      <Input type="password" name="password" required label="Password" placeholder="Min 12 symbols" />
+      <Input type="text" name="name" label="Ihre Vorname" placeholder="Mirasov Ruslan" required />
+      <Input type="email" name="email" label="Ihre Email" placeholder="example@example.com" required />
+      <Input type="tel" name="phone" label="Ihre Telephonnumer" placeholder="+49 XXX XXXXXXX" required />
+      <Input type="password" name="password" label="Password" placeholder="Min 12 symbols" required />
       <ButtonsList>
         <Button full>Anmelden</Button>
       </ButtonsList>
