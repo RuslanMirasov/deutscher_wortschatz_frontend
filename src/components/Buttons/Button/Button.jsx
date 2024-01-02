@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import css from './Button.module.scss';
 
-const Button = ({ to, onClick, variant, size, full, blank, children }) => {
+const Button = ({ to, onClick, variant, size, full, blank, disabled, children }) => {
   const allButtonClasses = {
     [css.Button]: true,
     [css.Big]: size === 'big',
@@ -22,11 +22,11 @@ const Button = ({ to, onClick, variant, size, full, blank, children }) => {
       <span>{children}</span>
     </Link>
   ) : onClick ? (
-    <button type="button" onClick={onClick} className={currentClasses}>
+    <button type="button" onClick={onClick} className={currentClasses} disabled={disabled}>
       <span>{children}</span>
     </button>
   ) : (
-    <button type="submit" className={currentClasses}>
+    <button type="submit" className={currentClasses} disabled={disabled}>
       <span>{children}</span>
     </button>
   );

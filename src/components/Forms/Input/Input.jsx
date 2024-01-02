@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { validateInput } from 'utils/validateInput';
 import css from './Input.module.scss';
 
-const Input = ({ type, name, value, required, label, placeholder }) => {
-  const [error, setError] = useState();
+const Input = ({ type, name, required, label, placeholder, onChange }) => {
+  const [error, setError] = useState(null);
+  const [inputValue, setInputValue] = useState('');
   const [showErrorText] = useState(true);
 
   const handleChange = e => {
+    setInputValue(e.target.value);
     const errorText = validateInput(e.target);
+    onChange(e);
     if (errorText) {
       setError(errorText);
       return;
@@ -21,11 +24,11 @@ const Input = ({ type, name, value, required, label, placeholder }) => {
       <span className={css.LabelInput}>
         <input
           type={type}
-          className={css.Input}
+          className={`${css.Input} ${error ? `${css.Invalid} invalid` : inputValue ? css.Valid : ''}`}
           name={name}
-          value={value ? value : undefined}
-          required={required ? true : undefined}
-          placeholder={placeholder ? placeholder : undefined}
+          value={inputValue}
+          required={required}
+          placeholder={placeholder}
           onChange={handleChange}
         />
       </span>

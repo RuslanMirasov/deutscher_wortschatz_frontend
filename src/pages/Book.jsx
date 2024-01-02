@@ -15,7 +15,7 @@ const Book = () => {
       <Section full>
         <ButtonsList>
           <Button onClick={() => popupOpen('confirm')}>Confirm</Button>
-          <Button onClick={() => popupOpen('error')}>Error</Button>
+          <Button onClick={() => popupOpen('error', 'error 404', 'Page not found')}>Error</Button>
           <Button onClick={() => popupOpen('request')}>Request</Button>
           <Button onClick={() => popupOpen('login')}>Login</Button>
           <Button onClick={() => popupOpen('registration')}>Registration</Button>

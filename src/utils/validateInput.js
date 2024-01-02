@@ -12,20 +12,22 @@ const errors = {
 export const validateInput = input => {
   let errorsText = '';
 
-  if (input.value.length === 0) {
-    errorsText = errors.empty;
-  } else {
-    //Name
-    if (input.name === 'name' && regExpName.test(input.value)) {
-      errorsText = errors.name;
-    }
-    //type tel
-    if (input.type === 'tel' && regExpPhone.test(input.value)) {
-      errorsText = errors.phone;
-    }
-    //email
-    if (input.type === 'email' && !regExpEmail.test(input.value)) {
-      errorsText = errors.email;
+  if (input.required) {
+    if (input.value.length === 0) {
+      errorsText = errors.empty;
+    } else {
+      //Name
+      if (input.name === 'name' && regExpName.test(input.value)) {
+        errorsText = errors.name;
+      }
+      //phone
+      if (input.type === 'tel' && !regExpPhone.test(input.value)) {
+        errorsText = errors.phone;
+      }
+      //email
+      if (input.type === 'email' && !regExpEmail.test(input.value)) {
+        errorsText = errors.email;
+      }
     }
   }
 

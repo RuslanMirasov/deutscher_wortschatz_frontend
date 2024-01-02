@@ -55,26 +55,31 @@ $input_font_size: 16px;
   outline: none;
   font-size: $input_font_size;
   &::placeholder {
-    color: #ccc;
+    color: rgb(163, 163, 163);
     font-size: inherit;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.25;
+    font-family: inherit;
     opacity: 1;
     transition: var(--cubic);
   }
+
   &:focus {
     border: 1px solid var(--yellow-color);
     &::placeholder {
       opacity: 0;
     }
   }
-  &.red {
-    border: 1px solid var(--red-color);
-    color: var(--red-color);
-  }
   &.input--textarea {
     height: 100px;
     resize: none;
   }
+}
+
+.Invalid {
+  border: 1px solid var(--red-color);
+  color: var(--red-color);
+}
+
+.Valid {
+  border: 1px solid var(--green-color) !important;
+  color: var(--text-color);
 }
