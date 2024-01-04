@@ -1,16 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+import { validateForm } from 'utils/formFunctions';
 import css from './Form.module.scss';
 
 const Form = ({ method = 'post', onSubmit, children }) => {
-  const [isValid, setIsValid] = useState(false);
   const handleSubmit = e => {
     e.preventDefault();
-    if (!isValid) {
+    const formData = new FormData(e.target);
+    const errorsCount = validateForm(e.target);
+    if (errorsCount > 0) {
       return;
     }
-    setIsValid(true);
-    onSubmit();
+    onSubmit(formData);
   };
 
   return (

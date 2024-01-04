@@ -6,15 +6,12 @@ const Text = ({ size, children }) => {
     [css.Big]: size === 'big',
     [css.Small]: size === 'small',
   };
-  return (
-    <p
-      className={Object.keys(textClasses)
-        .filter(key => textClasses[key])
-        .join(' ')}
-    >
-      {children}
-    </p>
-  );
+
+  const currentTextClasses = Object.keys(textClasses)
+    .filter(key => textClasses[key])
+    .join(' ');
+
+  return <p className={currentTextClasses}>{children}</p>;
 };
 
 export default Text;

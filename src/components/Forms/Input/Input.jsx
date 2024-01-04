@@ -1,20 +1,14 @@
 import { useState } from 'react';
-import { validateInput } from 'utils/validateInput';
+import { validateInput } from 'utils/formFunctions';
 import css from './Input.module.scss';
+import './inputValidation.scss';
 
-const Input = ({ type, name, required, label, placeholder }) => {
-  const [error, setError] = useState(null);
+const Input = ({ type, name, required, label, placeholder, value }) => {
   const [inputValue, setInputValue] = useState('');
-  const [showErrorText] = useState(true);
 
   const handleChange = e => {
     setInputValue(e.target.value);
-    const errorText = validateInput(e.target);
-    if (errorText) {
-      setError(errorText);
-      return;
-    }
-    setError(null);
+    validateInput(e.target);
   };
 
   return (
@@ -25,7 +19,7 @@ const Input = ({ type, name, required, label, placeholder }) => {
           <span className={css.LabelInput}>
             <input
               type={type}
-              className={`${css.Input} ${error ? `${css.Invalid} invalid` : inputValue ? css.Valid : ''}`}
+              className={css.Input}
               name={name}
               value={inputValue}
               required={required}
@@ -33,10 +27,23 @@ const Input = ({ type, name, required, label, placeholder }) => {
               onChange={handleChange}
             />
           </span>
-          {showErrorText && error && <span className={css.LabelError}>{error}</span>}
         </label>
       ) : type === 'hidden' ? (
-        <input type={type} name={name} value={inputValue} />
+        <input type={type} name={name} value={value} />
+      ) : type === 'textarea' ? (
+        <label className={css.Label}>
+          {label && <span className={css.LabelText}>{label}</span>}
+          <span className={css.LabelInput}>
+            <textarea
+              className={`${css.Input} ${css.Textarea}`}
+              name={name}
+              value={inputValue}
+              required={required}
+              placeholder={placeholder}
+              onChange={handleChange}
+            />
+          </span>
+        </label>
       ) : null}
     </>
   );

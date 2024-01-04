@@ -1,3 +1,4 @@
+import { CallbackForm } from 'components/Forms';
 import { Title, Text } from 'components/Typography';
 
 const PopupCallback = () => {
@@ -8,7 +9,11 @@ const PopupCallback = () => {
         App zu verbessern
       </Title>
       <hr />
-      <Text>Wenn Sie einen Tipp- oder Übersetzungsfehler gefunden haben, teilen Sie uns dies bitte mit.</Text>
+      <Text>
+        Wenn Sie einen Tipp- oder Übersetzungsfehler gefunden <br />
+        haben, teilen Sie uns dies bitte mit.
+      </Text>
+      <CallbackForm />
     </>
   );
 };

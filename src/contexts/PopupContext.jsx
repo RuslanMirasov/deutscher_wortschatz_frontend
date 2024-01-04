@@ -67,7 +67,7 @@ export const PopupProvider = ({ children }) => {
     text && setPopupText(text);
     setTimeout(() => {
       showPopup();
-    }, 10);
+    }, 1);
   };
 
   return (

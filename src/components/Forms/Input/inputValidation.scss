@@ -1,0 +1,30 @@
+.labelError {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--red-color);
+  height: auto;
+  padding-top: 6px;
+  opacity: 0;
+  transform: translate(10px, 0px);
+  transition: 0.4s ease-in-out;
+  &.active {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+input,
+textarea {
+  &.invalid {
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+  }
+  &.valid {
+    border: 1px solid var(--green-color) !important;
+    color: var(--text-color);
+  }
+}
