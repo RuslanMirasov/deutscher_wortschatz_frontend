@@ -21,27 +21,26 @@ export const validateInput = input => {
   const inputWrapper = currentInput.type === 'radio' ? currentInput.closest('fieldset') : currentInput.closest('label');
   const textErrorEl = inputWrapper.querySelector('.labelError');
 
-  // add Error function
-  // const addError = text => {
-  //   errorText = text;
-  //   currentInput.classList.remove('valid');
-  //   currentInput.classList.add('invalid');
-  //   if (useErrorTextMasseges) {
-  //     if (textErrorEl) {
-  //       textErrorEl.innerHTML = text;
-  //       return;
-  //     }
-  //     inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`);
-  //     setTimeout(() => {
-  //       inputWrapper.querySelector('.labelError').classList.add('active');
-  //     }, 1);
-  //   }
-  // };
-
+  // add Error
   const addError = text => {
     errorText = text;
-    currentInput.classList.replace('valid', 'invalid');
+    const currentInputs = inputWrapper.querySelectorAll('[required]');
+    currentInputs.forEach(requiredInput => {
+      requiredInput.classList.add('invalid');
+      requiredInput.classList.remove('valid');
+    });
+    addErrorText(text);
+  };
 
+  // delete Error
+  const deleteError = () => {
+    currentInput.classList.remove('invalid');
+    currentInput.classList.add('valid');
+    deleteErrorText();
+  };
+
+  // add error Text
+  const addErrorText = text => {
     if (useErrorTextMasseges) {
       const errorElement =
         textErrorEl ||
@@ -50,13 +49,7 @@ export const validateInput = input => {
     }
   };
 
-  // delete Error function
-  const deleteError = () => {
-    currentInput.classList.remove('invalid');
-    currentInput.classList.add('valid');
-    deleteErrorText();
-  };
-
+  // delete error Text
   const deleteErrorText = () => {
     if (textErrorEl) {
       textErrorEl.classList.remove('active');
@@ -66,6 +59,7 @@ export const validateInput = input => {
     }
   };
 
+  // radios in grup validate
   const radiosValidate = () => {
     const allRadios = inputWrapper.querySelectorAll('input[type="radio"]');
     const checkedRadios = inputWrapper.querySelectorAll('input[type="radio"]:checked');
@@ -81,6 +75,7 @@ export const validateInput = input => {
     addError(errors.radio);
   };
 
+  // validate inputs by type
   if (currentInput.required) {
     if (currentInput.value.length === 0) {
       addError(errors.empty);
