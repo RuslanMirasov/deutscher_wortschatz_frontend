@@ -22,8 +22,37 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={sendRegisterForm}>
       <Input type="text" name="name" label="Vorname" placeholder="Christoph" required />
+      <Input
+        type="select"
+        name="language"
+        label="Ihre Muttersprache"
+        placeholder="Wählen Sie..."
+        required
+        options={{
+          EN: 'English',
+          UA: 'Українська',
+          RU: 'Русский',
+          FR: 'Français',
+          IT: 'Italiano',
+          ES: 'Español',
+          PL: 'Polski',
+          TR: 'Türkçe',
+          AR: 'العربية',
+          FA: 'فارسی',
+        }}
+      />
+      <Input
+        type="select"
+        name="age"
+        label="Wie Alt sind Sie?"
+        placeholder="Wählen Sie..."
+        required
+        options={{
+          kind: '0-17',
+          jung: '18-29',
+        }}
+      />
       <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
-      <Input type="select" name="language" label="Ihre Muttersprache" placeholder="Eine Sprache wählen" required />
       <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen" required />
       <ButtonsList>
         <Button full>Registrieren</Button>

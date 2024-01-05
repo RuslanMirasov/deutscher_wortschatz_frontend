@@ -1,65 +1,10 @@
-$input_height: 50px;
-$input_border_radius: 8px;
-$input_font_size: 16px;
-
-.Label {
+.RadioWrapper {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  .LabelText {
-    display: block;
-    width: 100%;
-    margin-bottom: 8px;
-    color: var(--text-color);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px; /* 128.571% */
-  }
-  .LabelInput {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: relative;
-  }
-}
-
-.Input {
-  width: 100%;
-  height: $input_height;
-  padding: 14px 18px;
-  border-radius: $input_border_radius;
-  border: 1px solid #ccc;
-  user-select: none;
-  transition: var(--cubic);
-  background: none;
-  outline: none;
-  font-size: $input_font_size;
-  &::placeholder {
-    color: rgb(163, 163, 163);
-    font-size: inherit;
-    font-family: inherit;
-    opacity: 1;
-    transition: var(--cubic);
-  }
-
-  &:focus {
-    border: 1px solid var(--yellow-color);
-    &::placeholder {
-      opacity: 0;
-    }
-  }
-}
-
-.Textarea {
-  height: 150px;
-  resize: none;
-  font-family: inherit;
 }
 
 .Radio {

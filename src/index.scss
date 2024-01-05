@@ -75,3 +75,73 @@ img {
   padding: 0px 20px;
   z-index: 2;
 }
+
+//FORM VALIDATION
+
+.labelError {
+  display: flex;
+  width: 100% !important;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--red-color);
+  height: auto;
+  padding-top: 6px;
+  opacity: 0;
+  transform: translate(10px, 0px);
+  transition: 0.4s ease-in-out;
+  &.active {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+input,
+textarea {
+  &.invalid {
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+  }
+  &.valid {
+    border: 1px solid var(--green-color) !important;
+    color: var(--text-color);
+  }
+}
+
+input[type='hidden'],
+input[type='radio'],
+input[type='checkbox'] {
+  &.invalid {
+    ~ div {
+      border: 1px solid var(--red-color);
+    }
+  }
+}
+input[type='hidden'] {
+  &.valid {
+    ~ div {
+      border: 1px solid var(--green-color);
+    }
+  }
+}
+
+//CUSTOM SCROLLBAR
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* scrollbar width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0; /* color of thumb */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f8f8f8; /* track background */
+  border-radius: 4px;
+}

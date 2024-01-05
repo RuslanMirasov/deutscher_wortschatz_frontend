@@ -24,14 +24,7 @@ export const PopupProvider = ({ children }) => {
   useEffect(() => {
     const handleKeyPress = event => {
       if (event.key === 'Escape') {
-        hidePopup();
-        setTimeout(() => {
-          setIsOpenPopup(false);
-          setPopupType(defaultPopupType);
-          setPopupTitle('');
-          setPopupText('');
-          bodyUnlock();
-        }, 310);
+        popupClose();
       }
     };
     document.addEventListener('keydown', handleKeyPress);

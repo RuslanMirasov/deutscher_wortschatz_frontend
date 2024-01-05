@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { validateInput } from 'utils/formFunctions';
-import css from './Input.module.scss';
-import './inputValidation.scss';
+import { InputCheckbox, InputHidden, InputRadio, InputSelect, InputText, InputTextarea } from '../InputTypes';
 
-const Input = ({ type, name, required, label, placeholder, value = '', checked = false }) => {
+const Input = ({ type, name, required, label, placeholder, value = '', options, checked = false }) => {
   const [inputValue, setInputValue] = useState(value);
   const [inputChecked, setInputChecked] = useState(checked);
 
@@ -13,67 +12,23 @@ const Input = ({ type, name, required, label, placeholder, value = '', checked =
     validateInput(e.target);
   };
 
-  let inputMarkup = (
-    <label className={css.Label}>
-      {label && <span className={css.LabelText}>{label}</span>}
-      <span className={css.LabelInput}>
-        <input
-          type={type}
-          className={css.Input}
-          name={name}
-          value={inputValue}
-          checked={inputChecked}
-          required={required}
-          placeholder={placeholder}
-          onChange={handleChange}
-        />
-      </span>
-    </label>
+  return (
+    <>
+      {type === 'hidden' ? (
+        <InputHidden type={type} name={name} value={inputValue} />
+      ) : type === 'textarea' ? (
+        <InputTextarea name={name} value={inputValue} label={label} placeholder={placeholder} required={required} onChange={handleChange} />
+      ) : type === 'radio' ? (
+        <InputRadio type={type} name={name} label={label} value={inputValue} required={required} onChange={handleChange} />
+      ) : type === 'checkbox' ? (
+        <InputCheckbox type={type} name={name} label={label} value={inputValue} checked={inputChecked} required={required} onChange={handleChange} />
+      ) : type === 'select' ? (
+        <InputSelect name={name} label={label} placeholder={placeholder} required={required} options={options} onChange={handleChange} />
+      ) : (
+        <InputText type={type} name={name} label={label} value={inputValue} required={required} placeholder={placeholder} onChange={handleChange} />
+      )}
+    </>
   );
-
-  if (type === 'hidden') {
-    inputMarkup = <input type={type} name={name} value={value} />;
-  }
-
-  if (type === 'textarea') {
-    inputMarkup = (
-      <label className={css.Label}>
-        {label && <span className={css.LabelText}>{label}</span>}
-        <span className={css.LabelInput}>
-          <textarea
-            className={`${css.Input} ${css.Textarea}`}
-            name={name}
-            value={inputValue}
-            required={required}
-            placeholder={placeholder}
-            onChange={handleChange}
-          />
-        </span>
-      </label>
-    );
-  }
-
-  if (type === 'checkbox') {
-    inputMarkup = (
-      <label className={css.Label}>
-        <input className={css.Radio} type={type} name={name} value={inputValue} required={required} checked={inputChecked} onChange={handleChange} />
-        {label && <span className={css.RadioLabel}>{label}</span>}
-        <div className={`${css.Mark} ${css[`mark-${type}`]}`}></div>
-      </label>
-    );
-  }
-
-  if (type === 'radio') {
-    inputMarkup = (
-      <label className={css.Label}>
-        <input className={css.Radio} type={type} name={name} value={inputValue} required={required} onChange={handleChange} />
-        {label && <span className={css.RadioLabel}>{label}</span>}
-        <div className={`${css.Mark} ${css[`mark-${type}`]}`}></div>
-      </label>
-    );
-  }
-
-  return inputMarkup;
 };
 
 export default Input;

@@ -6,7 +6,7 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
 const errors = {
-  empty: 'Das Feld ist leer!',
+  empty: 'Füllen Sie das Feld aus!',
   name: 'Name darf keine Ziffern enthalten!',
   phone: 'Falsches Telefon-Format!',
   email: 'Falsches E-Mail-Format!',

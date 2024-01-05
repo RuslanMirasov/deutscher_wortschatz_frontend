@@ -23,17 +23,12 @@ const RequestForm = () => {
 
   return (
     <Form onSubmit={sendRequestForm}>
-      <Fieldset col="auto" label="Who are you">
-        <Input type="radio" name="sex" label="Man" value="Man" required />
-        <Input type="radio" name="sex" label="Woman" value="Woman" required />
-        <Input type="radio" name="sex" label="Trans" value="Trans" required />
-        <Input type="radio" name="sex" label="Animal" value="Animal" required />
-        <Input type="radio" name="sex" label="Zombie" value="Zombie" required />
-      </Fieldset>
+      <Input type="hidden" name="subject" value="request from my site" />
       <Fieldset col="auto" label="Hobby">
         <Input type="radio" name="hobby" label="Guitare" value="Guitare" required />
         <Input type="radio" name="hobby" label="Alkohol" value="Alkohol" required />
       </Fieldset>
+      <Input type="number" name="number" label="Age" placeholder="18-56" required />
       <Input type="text" name="name" label="Vorname" placeholder="Christoph" required />
       <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
       <Input type="tel" name="phone" label="Telefonnumer" placeholder="+490000000000" />

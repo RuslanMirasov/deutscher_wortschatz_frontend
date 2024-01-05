@@ -33,6 +33,13 @@ const Error = ({ size = 50, color }) => (
     />
   </svg>
 );
+
+const SelectArrow = ({ size = 50, color }) => (
+  <svg width={size} viewBox="0 0 50 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4L25 26L46 4" stroke={color} strokeWidth={8} strokeLinecap="round" />
+  </svg>
+);
+
 const Confirm = ({ size = 70, color }) => (
   <svg width={size} height={size} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16.9505 25L23.6135 32.1917" stroke={color} strokeWidth="4" strokeLinecap="round" />
@@ -49,6 +56,8 @@ const Icon = ({ name, color = 'currentColor', ...props }) => {
       return <Error color={color} {...props} />;
     case 'confirm':
       return <Confirm color={color} {...props} />;
+    case 'select-arrow':
+      return <SelectArrow color={color} {...props} />;
     default:
       return <Default color={color} {...props} />;
   }
