@@ -1,12 +1,19 @@
-import { Button, ButtonsList } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { usePopup } from 'contexts/PopupContext';
-import { Form, Input } from '..';
+import { Fieldset, Form, Input } from '..';
 
 const RequestForm = () => {
   const { setLoading, unsetLoading, popupOpen } = usePopup();
 
   const sendRequestForm = form => {
+    const formData = form;
     setLoading();
+
+    const formObject = {};
+    for (const [key, value] of formData.entries()) {
+      formObject[key] = value;
+    }
+    console.log(formObject);
 
     setTimeout(() => {
       unsetLoading();
@@ -16,13 +23,29 @@ const RequestForm = () => {
 
   return (
     <Form onSubmit={sendRequestForm}>
+      <Fieldset col="auto" label="Sex">
+        <Input type="radio" name="sex" label="Man" value="Man" required />
+        <Input type="radio" name="sex" label="Woman" value="Woman" required />
+      </Fieldset>
+      <Fieldset col="auto" label="Hobby">
+        <Input type="radio" name="hobby" label="Guitare" value="Guitare" required />
+        <Input type="radio" name="hobby" label="Alkohol" value="Alkohol" required />
+      </Fieldset>
       <Input type="text" name="name" label="Vorname" placeholder="Christoph" required />
       <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
-      <Input type="tel" name="phone" label="Ihre Telefonnumer" placeholder="+490000000000" required />
-      <Input type="textarea" name="massege" label="Ihre Nachricht" placeholder="Hallo, alle zusammen..." />
-      <ButtonsList>
-        <Button full>Registrieren</Button>
-      </ButtonsList>
+      <Input type="tel" name="phone" label="Telefonnumer" placeholder="+490000000000" />
+      <Input type="textarea" name="massege" label="Nachricht" placeholder="Hallo, alle zusammen..." />
+      <Fieldset col="1" label="Datenschutzbestimmungen">
+        <Input
+          type="checkbox"
+          name="agree"
+          label="Wenn Sie auf die Schaltfläche klicken, erklären Sie sich mit den Datenschutzbestimmungen einverstanden."
+          value="ok"
+          required
+        />
+      </Fieldset>
+
+      <Button full>Registrieren</Button>
     </Form>
   );
 };

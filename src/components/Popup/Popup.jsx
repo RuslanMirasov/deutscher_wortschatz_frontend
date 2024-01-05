@@ -16,8 +16,8 @@ const popupInfos = {
   confirmTitle: 'Die Bewerbung ist abgeschickt!',
   confirmText: 'Wir werden Ihre Bewerbung so schnell wie möglich bearbeiten.',
 
-  requestTitle: 'Anfrage versenden',
-  requestText: 'Füllen Sie das Formular aus und unser Manager wird Sie so schnell wie möglich kontaktieren.',
+  requestTitle: 'Ihre Bewerbung',
+  requestText: 'Füllen Sie das Formular aus und unser Manager wird Sie kontaktieren.',
 };
 
 const Popup = () => {

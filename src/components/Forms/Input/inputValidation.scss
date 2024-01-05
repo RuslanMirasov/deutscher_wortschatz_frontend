@@ -1,5 +1,6 @@
 .labelError {
   display: flex;
+  width: 100% !important;
   position: relative;
   justify-content: flex-start;
   align-items: flex-end;
@@ -26,5 +27,14 @@ textarea {
   &.valid {
     border: 1px solid var(--green-color) !important;
     color: var(--text-color);
+  }
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  &.invalid {
+    ~ div {
+      border: 1px solid var(--red-color);
+    }
   }
 }

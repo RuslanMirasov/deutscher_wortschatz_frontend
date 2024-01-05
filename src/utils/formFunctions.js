@@ -6,33 +6,47 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
 const errors = {
-  empty: 'The field is empty!',
-  name: 'Name cannot contain digits!',
-  phone: 'Wrong phone format!',
-  email: 'Wrong E-mail format!',
-  password: 'Das Passwort muss mindestens 6 Zeichen lang sein, Klein- und Großbuchstaben sowie Zahlen enthalten',
+  empty: 'Das Feld ist leer!',
+  name: 'Name darf keine Ziffern enthalten!',
+  phone: 'Falsches Telefon-Format!',
+  email: 'Falsches E-Mail-Format!',
+  password: 'Das Passwort muss Groß- und Kleinbuchstaben sowie Zahlen enthalten.',
+  checkbox: 'Dieser Punkt ist wichtig!',
+  radio: 'Keine der Optionen ist gewählt worden!',
 };
 
 export const validateInput = input => {
   let errorText = '';
   const currentInput = input;
-  const label = currentInput.closest('label');
-  const isErrorMassegeAlradyExist = label.querySelector('.labelError');
+  const inputWrapper = currentInput.type === 'radio' ? currentInput.closest('fieldset') : currentInput.closest('label');
+  const textErrorEl = inputWrapper.querySelector('.labelError');
 
   // add Error function
+  // const addError = text => {
+  //   errorText = text;
+  //   currentInput.classList.remove('valid');
+  //   currentInput.classList.add('invalid');
+  //   if (useErrorTextMasseges) {
+  //     if (textErrorEl) {
+  //       textErrorEl.innerHTML = text;
+  //       return;
+  //     }
+  //     inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`);
+  //     setTimeout(() => {
+  //       inputWrapper.querySelector('.labelError').classList.add('active');
+  //     }, 1);
+  //   }
+  // };
+
   const addError = text => {
     errorText = text;
-    currentInput.classList.remove('valid');
-    currentInput.classList.add('invalid');
+    currentInput.classList.replace('valid', 'invalid');
+
     if (useErrorTextMasseges) {
-      if (isErrorMassegeAlradyExist) {
-        isErrorMassegeAlradyExist.innerHTML = text;
-        return;
-      }
-      label.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`);
-      setTimeout(() => {
-        label.querySelector('.labelError').classList.add('active');
-      }, 1);
+      const errorElement =
+        textErrorEl ||
+        (inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`), inputWrapper.querySelector('.labelError'));
+      setTimeout(() => errorElement.classList.add('active'), 1);
     }
   };
 
@@ -40,15 +54,33 @@ export const validateInput = input => {
   const deleteError = () => {
     currentInput.classList.remove('invalid');
     currentInput.classList.add('valid');
-    if (isErrorMassegeAlradyExist) {
-      isErrorMassegeAlradyExist.classList.remove('active');
+    deleteErrorText();
+  };
+
+  const deleteErrorText = () => {
+    if (textErrorEl) {
+      textErrorEl.classList.remove('active');
       setTimeout(() => {
-        isErrorMassegeAlradyExist.remove();
+        textErrorEl.remove();
       }, 400);
     }
   };
 
-  // validation of selected input
+  const radiosValidate = () => {
+    const allRadios = inputWrapper.querySelectorAll('input[type="radio"]');
+    const checkedRadios = inputWrapper.querySelectorAll('input[type="radio"]:checked');
+
+    if (checkedRadios.length) {
+      allRadios.forEach(radio => {
+        radio.classList.remove('invalid');
+        radio.removeAttribute('required');
+      });
+      deleteErrorText();
+      return;
+    }
+    addError(errors.radio);
+  };
+
   if (currentInput.required) {
     if (currentInput.value.length === 0) {
       addError(errors.empty);
@@ -68,6 +100,14 @@ export const validateInput = input => {
       //password
       if (currentInput.type === 'password' && !passwordRegex.test(currentInput.value)) {
         addError(errors.password);
+      }
+      //checkboxes
+      if (currentInput.type === 'checkbox' && currentInput.checked === false) {
+        addError(errors.checkbox);
+      }
+      //radio
+      if (currentInput.type === 'radio') {
+        radiosValidate();
       }
     }
   }
