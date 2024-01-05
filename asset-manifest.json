@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/deutscher_wortschatz_frontend/static/css/main.c419dc5b.css",
-    "main.js": "/deutscher_wortschatz_frontend/static/js/main.b08af466.js",
+    "main.js": "/deutscher_wortschatz_frontend/static/js/main.cc0d774f.js",
     "static/css/415.95a1168e.chunk.css": "/deutscher_wortschatz_frontend/static/css/415.95a1168e.chunk.css",
     "static/js/415.3c301c19.chunk.js": "/deutscher_wortschatz_frontend/static/js/415.3c301c19.chunk.js",
     "static/css/604.95a1168e.chunk.css": "/deutscher_wortschatz_frontend/static/css/604.95a1168e.chunk.css",
@@ -14,7 +14,7 @@
     "static/js/805.387ed462.chunk.js": "/deutscher_wortschatz_frontend/static/js/805.387ed462.chunk.js",
     "index.html": "/deutscher_wortschatz_frontend/index.html",
     "main.c419dc5b.css.map": "/deutscher_wortschatz_frontend/static/css/main.c419dc5b.css.map",
-    "main.b08af466.js.map": "/deutscher_wortschatz_frontend/static/js/main.b08af466.js.map",
+    "main.cc0d774f.js.map": "/deutscher_wortschatz_frontend/static/js/main.cc0d774f.js.map",
     "415.95a1168e.chunk.css.map": "/deutscher_wortschatz_frontend/static/css/415.95a1168e.chunk.css.map",
     "415.3c301c19.chunk.js.map": "/deutscher_wortschatz_frontend/static/js/415.3c301c19.chunk.js.map",
     "604.95a1168e.chunk.css.map": "/deutscher_wortschatz_frontend/static/css/604.95a1168e.chunk.css.map",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.c419dc5b.css",
-    "static/js/main.b08af466.js"
+    "static/js/main.cc0d774f.js"
   ]
 }
