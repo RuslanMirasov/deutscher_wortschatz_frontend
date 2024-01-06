@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { bodyLock, bodyUnlock, showPopup, hidePopup, getScrollbarWidth } from 'utils/popupFunctions';
+import { bodyLock, bodyUnlock, showPopup, hidePopup } from 'utils/popupFunctions';
 
 const defaultPopupType = 'request';
 
@@ -8,18 +8,13 @@ const PopupContext = createContext();
 export const usePopup = () => useContext(PopupContext);
 
 export const PopupProvider = ({ children }) => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [isPopupLoading, setIsPopupLoading] = useState(false);
   const [popupType, setPopupType] = useState(defaultPopupType);
   const [popupTitle, setPopupTitle] = useState('');
   const [popupText, setPopupText] = useState('');
-  const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const containerRef = useRef();
-
-  useEffect(() => {
-    const width = getScrollbarWidth();
-    setScrollbarWidth(width);
-  }, []);
 
   useEffect(() => {
     const handleKeyPress = event => {
@@ -31,7 +26,7 @@ export const PopupProvider = ({ children }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []);
+  }, [isOpenMenu]);
 
   const setLoading = () => {
     setIsPopupLoading(true);
@@ -41,20 +36,24 @@ export const PopupProvider = ({ children }) => {
     setIsPopupLoading(false);
   };
 
-  const popupClose = () => {
-    hidePopup();
-    setTimeout(() => {
-      setIsOpenPopup(false);
-      setPopupType(defaultPopupType);
-      setPopupTitle('');
-      setPopupText('');
+  const menuToggle = () => {
+    bodyLock(window.innerWidth - document.body.clientWidth);
+    setIsOpenMenu(!isOpenMenu);
+    if (isOpenMenu) {
       bodyUnlock();
-    }, 310);
+    }
+  };
+
+  const menuClose = () => {
+    setIsOpenMenu(false);
+    bodyUnlock();
   };
 
   const popupOpen = (type, title, text) => {
     setIsOpenPopup(true);
-    bodyLock(scrollbarWidth);
+    if (!isOpenMenu || !isOpenPopup) {
+      bodyLock(window.innerWidth - document.body.clientWidth);
+    }
     setPopupType(type);
     title && setPopupTitle(title);
     text && setPopupText(text);
@@ -63,10 +62,36 @@ export const PopupProvider = ({ children }) => {
     }, 1);
   };
 
+  const popupClose = () => {
+    hidePopup();
+    setTimeout(() => {
+      setIsOpenPopup(false);
+      setPopupType(defaultPopupType);
+      setPopupTitle('');
+      setPopupText('');
+      if (!isOpenMenu) {
+        bodyUnlock();
+      }
+    }, 310);
+  };
+
   return (
     <PopupContext.Provider
       ref={containerRef}
-      value={{ isPopupLoading, isOpenPopup, popupType, popupTitle, popupText, setLoading, unsetLoading, popupClose, popupOpen }}
+      value={{
+        isPopupLoading,
+        isOpenPopup,
+        isOpenMenu,
+        popupType,
+        popupTitle,
+        popupText,
+        setLoading,
+        unsetLoading,
+        popupClose,
+        popupOpen,
+        menuToggle,
+        menuClose,
+      }}
     >
       {children}
     </PopupContext.Provider>

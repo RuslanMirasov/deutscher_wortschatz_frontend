@@ -42,8 +42,7 @@ const SelectArrow = ({ size = 50, color }) => (
 
 const Confirm = ({ size = 70, color }) => (
   <svg width={size} height={size} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.9505 25L23.6135 32.1917" stroke={color} strokeWidth="4" strokeLinecap="round" />
-    <path d="M34.9505 18L23.9505 32" stroke={color} strokeWidth="4" strokeLinecap="round" />
+    <path d="M13 26.5L24.5 33.5L36.5 17" stroke={color} strokeWidth="4" strokeLinecap="round" />
     <circle cx="25" cy="25" r="23.5" stroke={color} strokeWidth="3" />
   </svg>
 );

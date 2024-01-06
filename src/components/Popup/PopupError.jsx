@@ -9,13 +9,15 @@ const PopupError = ({ title, text }) => {
   return (
     <PopupAnimation>
       <Icon name="error" />
-      <>
-        <Title tag="h4" size="h6">
-          {title}
-        </Title>
-        <hr />
-      </>
-      <Text>{text}</Text>
+      {title && (
+        <>
+          <Title tag="h4" size="h6">
+            {title}
+          </Title>
+          <hr />
+        </>
+      )}
+      {text && <Text>{text}</Text>}
       <Button variant="black" size="small" onClick={popupClose} full>
         OK
       </Button>

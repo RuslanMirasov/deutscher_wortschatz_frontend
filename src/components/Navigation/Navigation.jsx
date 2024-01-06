@@ -1,20 +1,16 @@
-import { Link } from 'react-router-dom';
+import Menu from 'components/Menu/Menu';
 import css from './Navigation.module.scss';
+import { usePopup } from 'contexts/PopupContext';
 
 const Navigation = () => {
+  const { isOpenMenu, menuToggle } = usePopup();
+
   return (
-    <nav className={css.Wrapper}>
-      <ul className={css.Navigation}>
-        <li>
-          <Link to="./books">Books</Link>
-        </li>
-        <li>
-          <Link to="./books/1">One book</Link>
-        </li>
-        <li>
-          <Link to="./books/444/444">Contacts</Link>
-        </li>
-      </ul>
+    <nav className={`${css.Overlay} ${isOpenMenu ? css.isOpen : ''}`} onClick={menuToggle}>
+      <div className={`${css.Navigation} ${isOpenMenu ? css.isOpen : ''}`} onClick={e => e.stopPropagation()}>
+        <Menu />
+        <div onClick={menuToggle}>buttons</div>
+      </div>
     </nav>
   );
 };

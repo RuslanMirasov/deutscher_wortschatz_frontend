@@ -42,10 +42,12 @@ export const validateInput = input => {
   // add error Text
   const addErrorText = text => {
     if (useErrorTextMasseges) {
-      const errorElement =
-        textErrorEl ||
-        (inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`), inputWrapper.querySelector('.labelError'));
-      setTimeout(() => errorElement.classList.add('active'), 1);
+      if (textErrorEl) {
+        textErrorEl.innerHTML = text;
+        return;
+      }
+      inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`);
+      setTimeout(() => inputWrapper.querySelector('.labelError').classList.add('active'), 1);
     }
   };
 
@@ -55,7 +57,7 @@ export const validateInput = input => {
       textErrorEl.classList.remove('active');
       setTimeout(() => {
         textErrorEl.remove();
-      }, 400);
+      }, 300);
     }
   };
 
@@ -114,6 +116,7 @@ export const validateInput = input => {
   return errorText;
 };
 
+// validate Form
 export const validateForm = form => {
   let errorsCount = 0;
   const formData = form.querySelectorAll('[required]');

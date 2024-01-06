@@ -10,12 +10,6 @@ import PopupRegistration from './PopupRegistration';
 import './Popup.scss';
 
 const popupInfos = {
-  errorTitle: 'Autsch...',
-  errorText: 'Offenbar ist etwas nicht ganz nach Plan gelaufen :(',
-
-  confirmTitle: 'Die Bewerbung ist abgeschickt!',
-  confirmText: 'Wir werden Ihre Bewerbung so schnell wie möglich bearbeiten.',
-
   requestTitle: 'Ihre Bewerbung',
   requestText: 'Füllen Sie das Formular aus und unser Manager wird Sie kontaktieren.',
 };
@@ -44,15 +38,8 @@ const Popup = () => {
         <div className="popup" onClick={popupClose}>
           <div className={currentPopupContentClasses} onClick={e => e.stopPropagation()}>
             <CloseButton onClick={popupClose} />
-            {popupType === 'error' && (
-              <PopupError title={popupTitle === '' ? popupInfos.errorTitle : popupTitle} text={popupText === '' ? popupInfos.errorText : popupText} />
-            )}
-            {popupType === 'confirm' && (
-              <PopupConfirm
-                title={popupTitle === '' ? popupInfos.confirmTitle : popupTitle}
-                text={popupText === '' ? popupInfos.confirmText : popupText}
-              />
-            )}
+            {popupType === 'error' && <PopupError title={popupTitle} text={popupText} />}
+            {popupType === 'confirm' && <PopupConfirm title={popupTitle} text={popupText} />}
             {popupType === 'request' && (
               <PopupRequest
                 title={popupTitle === '' ? popupInfos.requestTitle : popupTitle}

@@ -1,8 +1,10 @@
 import Section from '../components/Section/Section';
 import { TitleBox, Title, Text } from 'components/Typography';
 import { Button, ButtonsList } from 'components/Buttons';
+import { usePopup } from 'contexts/PopupContext';
 
 const Home = () => {
+  const { popupOpen } = usePopup();
   return (
     <>
       <Section
@@ -24,6 +26,7 @@ const Home = () => {
           </Text>
           <ButtonsList>
             <Button to="./books/444">Unterrichten</Button>
+            <Button onClick={() => popupOpen('confirm', 'null', 'null')}>POPUP</Button>
           </ButtonsList>
         </TitleBox>
       </Section>
