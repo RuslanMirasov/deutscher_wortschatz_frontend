@@ -24,6 +24,19 @@ const RegisterForm = () => {
       <Input type="text" name="name" label="Vorname" placeholder="Christoph" required />
       <Input
         type="select"
+        name="age"
+        label="Wie Alt sind Sie?"
+        placeholder="Wählen Sie..."
+        required
+        options={{
+          kind: '0-17',
+          jung: '18-30',
+          eltern: '30-49',
+          old: 'mehr als 50',
+        }}
+      />
+      <Input
+        type="select"
         name="language"
         label="Ihre Muttersprache"
         placeholder="Wählen Sie..."
@@ -44,17 +57,7 @@ const RegisterForm = () => {
 
       <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
       <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen" required />
-      <Input
-        type="select"
-        name="age"
-        label="Wie Alt sind Sie?"
-        placeholder="Wählen Sie..."
-        required
-        options={{
-          kind: '0-17',
-          jung: '18-29',
-        }}
-      />
+
       <ButtonsList>
         <Button full>Registrieren</Button>
       </ButtonsList>
