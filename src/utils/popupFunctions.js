@@ -29,7 +29,7 @@ export const showPopup = e => {
 
 export const hidePopup = () => {
   const popupEl = document.querySelector('.popup');
-  if (popupEl.classList.contains('is-open')) {
+  if (popupEl && popupEl.classList.contains('is-open')) {
     popupEl.classList.remove('is-open');
   }
 };

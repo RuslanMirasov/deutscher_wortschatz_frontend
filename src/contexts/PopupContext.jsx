@@ -20,13 +20,14 @@ export const PopupProvider = ({ children }) => {
     const handleKeyPress = event => {
       if (event.key === 'Escape') {
         popupClose();
+        menuClose();
       }
     };
     document.addEventListener('keydown', handleKeyPress);
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [isOpenMenu]);
+  });
 
   const setLoading = () => {
     setIsPopupLoading(true);
