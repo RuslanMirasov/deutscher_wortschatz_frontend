@@ -41,6 +41,9 @@ const RegisterForm = () => {
           FA: 'فارسی',
         }}
       />
+
+      <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
+      <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen" required />
       <Input
         type="select"
         name="age"
@@ -52,8 +55,6 @@ const RegisterForm = () => {
           jung: '18-29',
         }}
       />
-      <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
-      <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen" required />
       <ButtonsList>
         <Button full>Registrieren</Button>
       </ButtonsList>

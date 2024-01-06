@@ -5,6 +5,7 @@ import css from '../InputText/InputText.module.scss';
 
 const InputSelect = ({ name, label, placeholder, required, options, value = '', onChange }) => {
   const selectInputRef = useRef(null);
+  const selectWrapperRef = useRef(null);
   const [selectValue, setSelectValue] = useState(value);
   const [selectValueText, setSelectValueText] = useState(value);
   const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +25,21 @@ const InputSelect = ({ name, label, placeholder, required, options, value = '', 
     setIsOpen(!isOpen);
   };
 
+  const handleClickOutside = event => {
+    if (selectWrapperRef.current && !selectWrapperRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <label className={`${css.Label} ${isOpen ? css.open : ''}`}>
+    <label className={`${css.Label} ${isOpen ? css.open : ''}`} ref={selectWrapperRef}>
       {label && <span className={css.LabelText}>{label}</span>}
       <span className={css.LabelInput}>
         <input type="hidden" name={name} value={selectValue} required={required} ref={selectInputRef} />
