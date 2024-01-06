@@ -1,4 +1,4 @@
-import { Button, ButtonsList } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { usePopup } from 'contexts/PopupContext';
 import { Fieldset, Form, Input } from '..';
 
