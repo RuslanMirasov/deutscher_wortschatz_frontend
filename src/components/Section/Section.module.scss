@@ -6,6 +6,11 @@
   padding-top: 80px;
   padding-bottom: 80px;
   color: inherit;
+  opacity: 0;
+  transition: 1s;
+  &.Visible {
+    opacity: 1;
+  }
 }
 
 .Dark {

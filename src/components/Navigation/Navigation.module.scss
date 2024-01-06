@@ -1,0 +1,20 @@
+.Wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  //   max-width: 375px;
+  height: 100%;
+
+  background: tomato;
+  padding: 0px 20px;
+  z-index: 1;
+}
+.Navigation {
+  display: inline-flex;
+}

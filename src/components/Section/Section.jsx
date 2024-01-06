@@ -1,4 +1,5 @@
 import css from './Section.module.scss';
+import { useState, useEffect } from 'react';
 
 const hexColor = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
 const rgbColor = /^rgb\(/;
@@ -13,6 +14,12 @@ const bgCheck = bgStyle => {
 };
 
 const Section = ({ bg = 'none', dark, padTop, padBottom, full, mask, children }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const sectionClasses = {
     [css.Section]: true,
     [css.padTopNone]: padTop === 'none',
@@ -23,6 +30,7 @@ const Section = ({ bg = 'none', dark, padTop, padBottom, full, mask, children })
     [css.padBottomBig]: padBottom === 'big',
     [css.FullScreen]: full,
     [css.Dark]: dark,
+    [css.Visible]: isVisible === true,
   };
 
   const currentSectionClasses = Object.keys(sectionClasses)

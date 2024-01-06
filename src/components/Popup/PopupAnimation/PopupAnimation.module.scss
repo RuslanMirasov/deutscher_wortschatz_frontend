@@ -1,0 +1,10 @@
+.PopupAnimation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  transition: 400ms;
+  &.Visible {
+    opacity: 1;
+  }
+}
