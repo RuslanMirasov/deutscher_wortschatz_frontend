@@ -1,9 +1,10 @@
 import { CallbackForm } from 'components/Forms';
 import { Title, Text } from 'components/Typography';
+import PopupAnimation from './PopupAnimation/PopupAnimation';
 
 const PopupCallback = () => {
   return (
-    <>
+    <PopupAnimation>
       <Title tag="h4" size="h5">
         Helfen Sie uns, die <br />
         App zu verbessern
@@ -14,7 +15,7 @@ const PopupCallback = () => {
         haben, teilen Sie uns dies bitte mit.
       </Text>
       <CallbackForm />
-    </>
+    </PopupAnimation>
   );
 };
 

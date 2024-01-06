@@ -1,6 +1,6 @@
 import { Button, ButtonsList } from 'components/Buttons';
 import { usePopup } from 'contexts/PopupContext';
-import { Form, Input } from '..';
+import { Fieldset, Form, Input } from '..';
 
 const RegisterForm = () => {
   const { setLoading, unsetLoading, popupOpen } = usePopup();
@@ -21,25 +21,12 @@ const RegisterForm = () => {
 
   return (
     <Form onSubmit={sendRegisterForm}>
-      <Input type="text" name="name" label="Vorname" placeholder="Christoph" required />
-      <Input
-        type="select"
-        name="age"
-        label="Wie Alt sind Sie?"
-        placeholder="Wählen Sie..."
-        required
-        options={{
-          kind: '0-17',
-          jung: '18-30',
-          eltern: '30-49',
-          old: 'mehr als 50',
-        }}
-      />
+      <Input type="text" name="name" label="Ihre Vorname" placeholder="..." required />
       <Input
         type="select"
         name="language"
         label="Ihre Muttersprache"
-        placeholder="Wählen Sie..."
+        placeholder="..."
         required
         options={{
           EN: 'English',
@@ -54,13 +41,20 @@ const RegisterForm = () => {
           FA: 'فارسی',
         }}
       />
+      <Input type="email" name="email" label="Email" placeholder="mail@gmail.com" required />
+      <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen (Az-09)" required />
+      <Fieldset col="1" label="Datenschutzbestimmungen">
+        <Input
+          type="checkbox"
+          name="agree"
+          label="Wenn Sie auf die Schaltfläche klicken, erklären Sie sich mit den Datenschutzbestimmungen einverstanden."
+          value="ok"
+          required
+          checked
+        />
+      </Fieldset>
 
-      <Input type="email" name="email" label="Email" placeholder="example@example.com" required />
-      <Input type="password" name="password" label="Passwort" placeholder="Mindestens 6 Zeichen" required />
-
-      <ButtonsList>
-        <Button full>Registrieren</Button>
-      </ButtonsList>
+      <Button full>Registrieren</Button>
     </Form>
   );
 };
