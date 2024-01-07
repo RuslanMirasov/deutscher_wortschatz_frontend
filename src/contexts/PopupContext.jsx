@@ -19,8 +19,7 @@ export const PopupProvider = ({ children }) => {
   useEffect(() => {
     const handleKeyPress = event => {
       if (event.key === 'Escape') {
-        popupClose();
-        menuClose();
+        escapeActions();
       }
     };
     document.addEventListener('keydown', handleKeyPress);
@@ -28,6 +27,14 @@ export const PopupProvider = ({ children }) => {
       document.removeEventListener('keydown', handleKeyPress);
     };
   });
+
+  const escapeActions = () => {
+    if (isOpenPopup) {
+      popupClose();
+      return;
+    }
+    menuClose();
+  };
 
   const setLoading = () => {
     setIsPopupLoading(true);

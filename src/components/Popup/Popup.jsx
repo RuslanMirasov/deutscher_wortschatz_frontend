@@ -9,11 +9,6 @@ import PopupLogin from './PopupLogin';
 import PopupRegistration from './PopupRegistration';
 import './Popup.scss';
 
-const popupInfos = {
-  requestTitle: 'Ihre Bewerbung',
-  requestText: 'Füllen Sie das Formular aus und unser Manager wird Sie kontaktieren.',
-};
-
 const Popup = () => {
   const { isPopupLoading, isOpenPopup, popupType, popupTitle, popupText, popupClose } = usePopup();
 
@@ -40,12 +35,7 @@ const Popup = () => {
             <CloseButton onClick={popupClose} />
             {popupType === 'error' && <PopupError title={popupTitle} text={popupText} />}
             {popupType === 'confirm' && <PopupConfirm title={popupTitle} text={popupText} />}
-            {popupType === 'request' && (
-              <PopupRequest
-                title={popupTitle === '' ? popupInfos.requestTitle : popupTitle}
-                text={popupText === '' ? popupInfos.requestText : popupText}
-              />
-            )}
+            {popupType === 'request' && <PopupRequest title={popupTitle} text={popupText} />}
             {popupType === 'callback' && <PopupCallback />}
             {popupType === 'login' && <PopupLogin />}
             {popupType === 'registration' && <PopupRegistration />}

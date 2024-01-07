@@ -1,7 +1,31 @@
 .Menu {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   li {
     width: 100%;
+    font-size: 40px;
+    line-height: 1.3;
+    font-family: inherit;
+    font-weight: 600;
+    /*LEVEL 2*/
+    ul {
+      display: inline-flex;
+      flex-wrap: wrap;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 10px;
+      li {
+        font-size: 30px;
+        font-weight: 400;
+      }
+    }
   }
 }
