@@ -26,11 +26,11 @@
 
 .Navigation {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: 375px;
+  max-width: 420px;
   height: 100%;
   background: var(--white);
   padding: 80px 20px 30px 20px;

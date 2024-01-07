@@ -47,19 +47,43 @@ const Confirm = ({ size = 70, color }) => (
   </svg>
 );
 
+const Smile = ({ size = 70, color }) => (
+  <svg width={size} height={size} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="25" cy="25" r="23.5" stroke={color} strokeWidth="3" />
+    <circle cx="15" cy="19" r="6.5" stroke={color} strokeWidth="3" />
+    <circle cx="34" cy="19" r="6.5" stroke={color} strokeWidth="3" />
+    <path
+      d="M14.5951 19.3699C14.0491 19.3699 14.0644 18.6617 14.5397 18.5499C15.0494 18.43 15.334 19.0903 14.7946 19.2701"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+    />
+    <path
+      d="M33.643 19.669C33.643 19.271 33.522 18.8802 33.8868 18.6718C34.064 18.5705 34.7253 18.4252 34.74 18.7937C34.756 19.1934 34.4392 20.0578 33.8979 19.7134C33.4912 19.4545 33.3524 18.7354 33.8425 18.572"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+    />
+    <path
+      d="M13.9968 33.8303C14.2495 33.8584 14.4194 34.2555 14.5508 34.4342C15.011 35.0601 15.5327 35.6597 16.2018 36.0686C17.9513 37.1377 19.9323 38.2386 21.9749 38.595C23.6042 38.8793 25.348 38.389 26.9391 38.0853C28.283 37.8289 29.6953 37.7841 30.8229 36.9218C32.3622 35.7447 33.5819 33.8067 34.3411 32.0352"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 const Icon = ({ name, color = 'currentColor', ...props }) => {
-  switch (name) {
-    case 'logo':
-      return <Logo color={color} {...props} />;
-    case 'error':
-      return <Error color={color} {...props} />;
-    case 'confirm':
-      return <Confirm color={color} {...props} />;
-    case 'select-arrow':
-      return <SelectArrow color={color} {...props} />;
-    default:
-      return <Default color={color} {...props} />;
-  }
+  return (
+    <>
+      {!name && <Default color={color} {...props} />}
+      {name === 'logo' && <Logo color={color} {...props} />}
+      {name === 'error' && <Error color={color} {...props} />}
+      {name === 'confirm' && <Confirm color={color} {...props} />}
+      {name === 'select-arrow' && <SelectArrow color={color} {...props} />}
+      {name === 'smile' && <Smile color={color} {...props} />}
+    </>
+  );
 };
 
 export default Icon;
