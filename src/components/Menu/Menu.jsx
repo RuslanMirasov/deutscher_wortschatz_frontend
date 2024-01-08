@@ -1,6 +1,6 @@
 import { usePopup } from 'contexts/PopupContext';
 import { useEffect } from 'react';
-import { addArrowsToMultipleLinks, calculateHeightOfInnerUl } from 'utils/menuFunctions';
+import { addArrowsToMultipleLinks, arrowBtnAction } from 'utils/menuFunctions';
 import MenuLink from './MenuLink';
 import css from './Menu.module.scss';
 
@@ -12,20 +12,7 @@ const Menu = () => {
   }, []);
 
   const handleArrowClick = e => {
-    const innerLi = e.target.closest('li');
-    const innerUl = innerLi.querySelector('ul');
-    innerLi.classList.toggle(css.Open);
-    if (!innerLi.classList.contains(css.Open)) {
-      innerUl.style.height = `${calculateHeightOfInnerUl(innerUl)}px`;
-      setTimeout(() => {
-        innerUl.style.height = '0px';
-      }, 10);
-      return;
-    }
-    innerUl.style.height = `${calculateHeightOfInnerUl(innerUl)}px`;
-    setTimeout(() => {
-      innerUl.style.height = 'auto';
-    }, 600);
+    arrowBtnAction(e.target, css.Open);
   };
 
   return (
@@ -39,7 +26,24 @@ const Menu = () => {
           <MenuLink to="./books/book" text="Schritte plus neu A2.2">
             <ul>
               <MenuLink to="./books/book" text="Thema 1" />
-              <MenuLink to="./books/book" text="Thema 2" />
+              <MenuLink to="./books/book" text="Thema 2">
+                <ul>
+                  <MenuLink to="./books/book" text="Thema 1" />
+                  <MenuLink to="./books/book" text="Thema 2" />
+                  <MenuLink to="./books/book" text="Thema 3" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                  <MenuLink to="./books/book" text="Thema 4" />
+                </ul>
+              </MenuLink>
               <MenuLink to="./books/book" text="Thema 3" />
               <MenuLink to="./books/book" text="Thema 4" />
             </ul>

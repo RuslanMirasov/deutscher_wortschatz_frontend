@@ -25,3 +25,27 @@ export const calculateHeightOfInnerUl = element => {
 
   return totalHeight;
 };
+
+export const arrowBtnAction = (targetBtn, classOpen) => {
+  const innerLi = targetBtn.closest('li');
+  const innerUl = innerLi.querySelector('ul');
+  innerLi.classList.toggle(classOpen);
+
+  if (!innerLi.classList.contains(classOpen)) {
+    const allInnerUl = innerLi.querySelectorAll('ul');
+    allInnerUl.forEach(ul => {
+      ul.style.height = `${calculateHeightOfInnerUl(ul)}px`;
+      if (ul.closest('li').classList.contains(classOpen)) {
+        ul.closest('li').classList.remove(classOpen);
+      }
+      setTimeout(() => {
+        ul.style.height = '0px';
+      }, 10);
+    });
+    return;
+  }
+  innerUl.style.height = `${calculateHeightOfInnerUl(innerUl)}px`;
+  setTimeout(() => {
+    innerUl.style.height = 'auto';
+  }, 600);
+};
