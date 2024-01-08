@@ -4,7 +4,7 @@ import css from './Burger.module.scss';
 
 const Burger = ({ children }) => {
   const [isOpen, setIsOpen] = useState();
-  const { isOpenMenu, menuToggle } = usePopup();
+  const { isOpenMenu, menuToggle, isMobile } = usePopup();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -12,11 +12,15 @@ const Burger = ({ children }) => {
   };
 
   return (
-    <button type="button" className={`${css.Burger} ${isOpenMenu ? css.isOpen : ''}`} onClick={handleClick}>
-      <span>
-        <b hidden>Open menu</b>
-      </span>
-    </button>
+    <>
+      {isMobile && (
+        <button type="button" className={`${css.Burger} ${isOpenMenu ? css.isOpen : ''}`} onClick={handleClick}>
+          <span>
+            <b hidden>Open menu</b>
+          </span>
+        </button>
+      )}
+    </>
   );
 };
 

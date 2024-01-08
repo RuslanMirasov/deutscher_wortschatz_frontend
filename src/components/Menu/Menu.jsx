@@ -20,10 +20,7 @@ const Menu = () => {
       <MenuLink to="./" text="Startseite" />
       <MenuLink to="./books" text="Bücher">
         <ul>
-          <MenuLink to="./books/book" text="Schritte plus neu A1.1" />
-          <MenuLink to="./books/book" text="Schritte plus neu A1.2" />
-          <MenuLink to="./books/book" text="Schritte plus neu A2.1" />
-          <MenuLink to="./books/book" text="Schritte plus neu A2.2">
+          <MenuLink to="./books/book" text="Schritte plus neu A1.1">
             <ul>
               <MenuLink to="./books/book" text="Thema 1" />
               <MenuLink to="./books/book" text="Thema 2">
@@ -32,15 +29,24 @@ const Menu = () => {
                   <MenuLink to="./books/book" text="Thema 2" />
                   <MenuLink to="./books/book" text="Thema 3" />
                   <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
-                  <MenuLink to="./books/book" text="Thema 4" />
+                </ul>
+              </MenuLink>
+              <MenuLink to="./books/book" text="Thema 3" />
+              <MenuLink to="./books/book" text="Thema 4" />
+            </ul>
+          </MenuLink>
+          <MenuLink to="./books/book" text="Schritte plus neu A1.2" />
+          <MenuLink to="./books/book" text="Schritte plus neu A2.1" />
+          <MenuLink to="./books/book" text="Schritte plus neu A2.2" />
+          <MenuLink to="./books/book" text="Schritte plus neu B1.1" />
+          <MenuLink to="./books/book" text="Schritte plus neu B1.2">
+            <ul>
+              <MenuLink to="./books/book" text="Thema 1" />
+              <MenuLink to="./books/book" text="Thema 2">
+                <ul>
+                  <MenuLink to="./books/book" text="Thema 1" />
+                  <MenuLink to="./books/book" text="Thema 2" />
+                  <MenuLink to="./books/book" text="Etwas planen" />
                   <MenuLink to="./books/book" text="Thema 4" />
                 </ul>
               </MenuLink>
@@ -48,8 +54,6 @@ const Menu = () => {
               <MenuLink to="./books/book" text="Thema 4" />
             </ul>
           </MenuLink>
-          <MenuLink to="./books/book" text="Schritte plus neu B1.1" />
-          <MenuLink to="./books/book" text="Schritte plus neu B1.2" />
           <MenuLink to="./books/book" text="Schritte für schritte zum DTZ" />
           <MenuLink to="./books/book" text="Einfach besser 500 B2 Beruf" />
         </ul>

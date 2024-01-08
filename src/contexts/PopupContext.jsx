@@ -8,6 +8,7 @@ const PopupContext = createContext();
 export const usePopup = () => useContext(PopupContext);
 
 export const PopupProvider = ({ children }) => {
+  const [isMobile, setIsMobile] = useState();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [isPopupLoading, setIsPopupLoading] = useState(false);
@@ -16,6 +17,19 @@ export const PopupProvider = ({ children }) => {
   const [popupText, setPopupText] = useState('');
   const containerRef = useRef();
 
+  // SCREEN WIDTH CHECK
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1023);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  //CLOSE POPUP AND MENU WITH ESCAPE
   useEffect(() => {
     const handleKeyPress = event => {
       if (event.key === 'Escape') {
@@ -36,6 +50,7 @@ export const PopupProvider = ({ children }) => {
     menuClose();
   };
 
+  //POPUP LOADING
   const setLoading = () => {
     setIsPopupLoading(true);
   };
@@ -44,6 +59,7 @@ export const PopupProvider = ({ children }) => {
     setIsPopupLoading(false);
   };
 
+  //MENU TOGGLE AND CLOSE
   const menuToggle = () => {
     bodyLock(window.innerWidth - document.body.clientWidth);
     setIsOpenMenu(!isOpenMenu);
@@ -57,6 +73,7 @@ export const PopupProvider = ({ children }) => {
     bodyUnlock();
   };
 
+  //POPUP OPEN AND CLOSE
   const popupOpen = (type, title, text) => {
     setIsOpenPopup(true);
     if (!isOpenMenu || !isOpenPopup) {
@@ -87,6 +104,7 @@ export const PopupProvider = ({ children }) => {
     <PopupContext.Provider
       ref={containerRef}
       value={{
+        isMobile,
         isPopupLoading,
         isOpenPopup,
         isOpenMenu,

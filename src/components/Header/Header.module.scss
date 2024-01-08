@@ -19,7 +19,7 @@
   composes: container from 'index.scss';
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 }
