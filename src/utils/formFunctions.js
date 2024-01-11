@@ -13,6 +13,8 @@ const errors = {
   password: 'Das Passwort muss Groß- und Kleinbuchstaben sowie Zahlen enthalten.',
   checkbox: 'Dieser Punkt ist wichtig!',
   radio: 'Keine der Optionen ist gewählt worden!',
+  max: 'Maximalwert 20',
+  min: 'Minimalwert 10',
 };
 
 export const validateInput = input => {
@@ -40,13 +42,14 @@ export const validateInput = input => {
   };
 
   // add error Text
-  const addErrorText = text => {
+  const addErrorText = (text, value) => {
     if (useErrorTextMasseges) {
+      const valeuText = value || '';
       if (textErrorEl) {
         textErrorEl.innerHTML = text;
         return;
       }
-      inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text}</span>`);
+      inputWrapper.insertAdjacentHTML('beforeend', `<span class="labelError">${text} ${valeuText}</span>`);
       setTimeout(() => inputWrapper.querySelector('.labelError').classList.add('active'), 1);
     }
   };
@@ -81,6 +84,10 @@ export const validateInput = input => {
   if (currentInput.required) {
     if (currentInput.value.length === 0) {
       addError(errors.empty);
+    } else if (currentInput.min && Number(currentInput.value) < currentInput.min) {
+      addError(errors.min);
+    } else if (currentInput.max && Number(currentInput.value) > currentInput.max) {
+      addError(errors.max);
     } else {
       //Name
       if (currentInput.name === 'name' && nameRegex.test(currentInput.value)) {

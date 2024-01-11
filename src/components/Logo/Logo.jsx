@@ -9,8 +9,9 @@ const Logo = () => {
     <NavLink to="/" className={css.Logo} onClick={menuClose}>
       <Icon name="logo" size={26} />
       <div className={css.LogoText}>
-        <p>Deutscher</p>
-        <span>Wortschatz</span>
+        <p>
+          Wort&nbsp;<span>Kraft</span>
+        </p>
       </div>
     </NavLink>
   );

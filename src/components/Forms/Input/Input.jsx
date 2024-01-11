@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { validateInput } from 'utils/formFunctions';
 import { InputCheckbox, InputHidden, InputRadio, InputSelect, InputText, InputTextarea } from '../InputTypes';
 
-const Input = ({ type, name, required, label, placeholder, value = '', options, checked = false }) => {
+const Input = ({ type, name, required, label, placeholder, value = '', options, min, max, checked = false, onChange }) => {
   const [inputValue, setInputValue] = useState(value);
   const [inputChecked, setInputChecked] = useState(checked);
 
   const handleChange = e => {
-    setInputChecked(e.target.checked);
-    setInputValue(e.target.value);
     validateInput(e.target);
+    setInputValue(e.target.value);
+    setInputChecked(e.target.checked);
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   return (
@@ -25,7 +28,17 @@ const Input = ({ type, name, required, label, placeholder, value = '', options, 
       ) : type === 'select' ? (
         <InputSelect name={name} label={label} placeholder={placeholder} required={required} options={options} onChange={handleChange} />
       ) : (
-        <InputText type={type} name={name} label={label} value={inputValue} required={required} placeholder={placeholder} onChange={handleChange} />
+        <InputText
+          type={type}
+          name={name}
+          label={label}
+          value={inputValue}
+          required={required}
+          placeholder={placeholder}
+          min={min}
+          max={max}
+          onChange={handleChange}
+        />
       )}
     </>
   );

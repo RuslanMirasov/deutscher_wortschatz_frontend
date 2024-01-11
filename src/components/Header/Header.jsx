@@ -13,7 +13,7 @@ const Header = ({ children }) => {
         <Navigation />
         <div className={css.HeaderUserInfo}>
           <Button size="small" variant="border-dark" onClick={() => popupOpen('login')}>
-            Anmeldung
+            Login
           </Button>
           <Burger />
         </div>
